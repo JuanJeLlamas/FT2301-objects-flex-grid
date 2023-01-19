@@ -186,3 +186,100 @@ for (let nombreDePropiedad in headPhones) {
 
 // Para arrays usen solo "for" o "for of"
 // Para objetos usen solo "for in"
+
+
+
+// ESTRUCTURA DE DATOS
+
+const users = [
+  {
+    name: "Jorge",
+    bitcoin: 0,
+    hasNFTs: false,
+  },
+  {
+    name: "Caro",
+    bitcoin: 0.02,
+    hasNFTs: false,
+  },
+  {
+    name: "Adria",
+    bitcoin: 0.2,
+    hasNFTs: false,
+  },
+  {
+    name: "Ruth",
+    bitcoin: 0,
+    hasNFTs: false,
+  },
+];
+
+// acceder al usario Caro y cambiar NFTs a true
+console.log(users[1])
+users[1].hasNFTs = true;
+
+users[2]["bitcoin"] = 1.2
+
+
+
+// cambiar la propiedad bitcoin de un usuario llamado Adria. Si no sabemos la posición.
+for (let i = 0; i < users.length; i++) {
+
+  // console.log(users[i])
+  if (users[i].name === "Adria") {
+    users[i].bitcoin = 1.5
+  }
+
+}
+
+
+
+// agregar un nuevo usuario. todas sus propiedades.
+
+let newUser = {
+  name: "Phantom",
+  bitcoin: 2,
+  hasNFTs: true
+}
+
+users.push(newUser)
+
+
+console.log(users)
+
+
+// una funcion que verifica un usuario si tiene bitcoins o NFTs y arroje un mensaje. 
+
+function doesUserInvest(oneUser) {
+  // verifica un usuario si tiene bitcoins o NFTs
+  if (oneUser.bitcoin > 0 || oneUser.hasNFTs === true) {
+    return "Usuario Facturando!"
+  } else {
+    return "Usuario no cree en criptos"
+  }
+
+}
+
+console.log( doesUserInvest( users[0] ) )
+
+
+// vamos a crear una funcion que recibe un array me retorna un usuario aleatorio del array.
+
+function selectRandomUser(userArr) {
+  // .???? Math.random() ?? 0 - 0.99999999999
+  let randomNumber = Math.random() * userArr.length
+  // console.log(randomNumber)
+  let randomPosition = Math.floor(randomNumber)
+
+  return userArr[randomPosition]
+
+  // return userArr[Math.floor(Math.random() * userArr.length)]
+}
+
+console.log( selectRandomUser(users) )
+
+// nombre de un usuario aleatorio. y si esta invirtiendo o no.
+
+let randomUser = selectRandomUser(users);
+let messageUser = doesUserInvest(randomUser);
+console.log(`Nombre: ${randomUser.name}. ${messageUser}`)
